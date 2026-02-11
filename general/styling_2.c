@@ -1,0 +1,1 @@
+#include <stdio.h>#include <stdlib.h>#include <string.h>int main(){char*s=malloc(100);strcpy(s,"Hello, world!");for(int i=0;i<strlen(s);++i)printf("%c \n",s[i]);free(s);return 0;}

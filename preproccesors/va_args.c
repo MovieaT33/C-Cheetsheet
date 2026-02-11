@@ -1,0 +1,17 @@
+struct _foo_args {
+    int num;
+    const char *text;
+};
+
+#define foo(...) _foo((struct _foo_args){ __VA_ARGS__ })
+int _foo(struct _foo_args args)
+{
+    puts(args.text);
+    return args.num;
+}
+
+int main(void)
+{
+    int result = foo(.text = "Hello!", .num = 8);
+    return 0;
+}
