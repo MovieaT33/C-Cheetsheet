@@ -4,6 +4,7 @@ int main(void) {
     unsigned short unsigned_short_integer;
     unsigned long unsigned_long_integer = 0UL;
     unsigned long long unsigned_long_long_integer = 0ULL;
+    unsigned __int128 unsigned_128_bit_integer; // GCC extension
 
     /* The same:
     unsigned char int unsigned_char;

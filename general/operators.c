@@ -74,6 +74,9 @@ int main(void) {
     c = (num = 5, printf("Hello\n"), num + 3); // 8
 
     // Special:
+    int cool_var = 1;
+    if (cool_var =! 0) return 1; // if (cool_var = !0)
+
     size_t n = 10;
     while (n --> 0) // `while (n-- > 0)`
         printf("%d\n", n);
@@ -104,6 +107,8 @@ int main(void) {
     a ^= b; // a = 101 ^ 010 = 111
     b ^= a; // b = 010 ^ 111 = 101
     a ^= b; // a = 111 ^ 101 = 010
+
+    a ^= b ^= a;
 
     return 0;
 }

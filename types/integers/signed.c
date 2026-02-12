@@ -4,6 +4,7 @@ int main(void) {
     signed short signed_short_integer;
     signed long signed_long_integer = 0UL;
     signed long long signed_long_long_integer = 0ULL;
+    signed __int128 signed_128_bit_integer; // GCC extension
 
     // Or:
     char a;
@@ -17,6 +18,11 @@ int main(void) {
     signed short int signed_short_integer;
     signed long int signed_long_integer = 0UL;
     signed long long int signed_long_long_integer = 0ULL;
+    */
+
+    /* You can move qualifiers around:
+    const int signed volatile register var;
+    volatile static int signed const *p;
     */
 
     return 0;

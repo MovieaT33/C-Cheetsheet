@@ -161,5 +161,9 @@ int main(void) {
     int var_11 __attribute__((may_alias)) = 99;
     const int var_12 __attribute__((const)) = 50;
 
+    // 16. Initialization with itself (UB):
+    int a = a;
+    int b = b + 1;
+
     return 1;
 }
