@@ -1,6 +1,10 @@
+#include <assert.h>
+
 #define PI 3.14159
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 #define SQUARE(x) ((x) * (x))
+
+#define NOOP() do { ; } while(0)
 
 #define __user   __attribute__((noderef, address_space(1)))
 
@@ -26,6 +30,7 @@ string"
 #include LIB
 
 _Static_assert(SQUARE(5) == 25, "error");
+static_assert(sizeof(int) == 4, "error");
 
 int main(void) BEGIN
     double area = PI * 5 * 5;

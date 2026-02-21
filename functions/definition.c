@@ -74,6 +74,9 @@ int main(void) {
 
     do_not_work();
 
+    int i = 1, j = 2;
+    sum(i++, j++); // UB
+
     return result;
 }
 

@@ -28,9 +28,11 @@ int main(void) {
     // `size_t` is the type returned by `sizeof`:
     size_t a = sizeof(int);
     int b = sizeof a == a;
-    int c = sizeof(b) == 4;
+    int c = sizeof(b += 2) == 4;
+    // b = 1, c = 1
 
     size_t c = sizeof('d'); // 'd' -> (int)100 -> 4 bytes
+    size_t s = sizeof("Hello");
 
     // Using sizeof with variables:
     int x;
@@ -123,4 +125,13 @@ int main(void) {
         case sizeof var_2:
             break;
     }
+
+    int o = 5;
+    sizeof(int[++o]); // o = 6
+    printf("%d", o);
+
+    int delta = 10;
+    int gamma[delta];
+    int y=sizeof(gamma);     // 3 * sizeof(int) = 40
+    int z=sizeof(gamma + 0); // sizeof(int*) = 8 (on 64-bit)
 }

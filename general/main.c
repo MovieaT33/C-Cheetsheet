@@ -21,6 +21,8 @@ _Noreturn void some_error(void) {
 
 // Entry point (required). As default returns 0 (`int`).
 int main(int argc, char **argv) { // Or `<any_type_or_empty> main(...)`, but it is unrecommended. And `char *argv[]` is equivalent to `char **argv`.
+    asm("ret"); // Segmentation fault (core dumped)
+
     int code = 0; // Default return code
     code = 1;     // Error occurred
 

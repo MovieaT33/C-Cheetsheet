@@ -118,6 +118,19 @@ struct feature { int a[4]; };
 
 struct point { int x, y, z; };
 
+typedef struct Vec3 { int value[3]; } Vec3;
+
+Vec3 zero_vec3() {
+    Vec3 v = {}; // All members initialized to 0.
+    return v;
+}
+
+struct {
+    struct {
+        // nothing
+    };
+};
+
 int main(void) {
     struct {};
 
@@ -133,6 +146,8 @@ int main(void) {
 
     struct Point p4 = {10};
     // p4.y = 0;
+    struct Point p5 = {0}; // All members initialized to 0.
+    struct Point p6 = p4;
 
     struct {
         int x;

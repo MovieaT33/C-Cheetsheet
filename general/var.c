@@ -7,7 +7,7 @@ const int const_var = 2e+4;
 constexpr int constexpr_var = 3e-2;
 
 // `.data` section
-int global_a = (5);
+int global_a = {}; // `{}` is a empty initializer which initializes a variable to zero
 int global_b = 10 + 10;
 // int global_3 = global_2;   // Error
 // int global_4 = const_var;  // Error
@@ -45,7 +45,7 @@ int main(void) {
 
     int B$dollar;
     (B$dollar = 10);
-    int (café) = 20, αβγ = café;
+    int (café) = {20, 50}, αβγ = café;
 
     /* 3. Variable declaration:
     <type> <name> = <value>;
@@ -180,6 +180,10 @@ int main(void) {
      * https://gcc.gnu.org/onlinedocs/gcc-13.1/gcc/Variable-Attributes.html
      * https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gcc/Variable-Attributes.html#Variable-Attributes
      */
+
+    // `thread_local`
+
+    if (-1 < 1U) // false
 
     return 1;
 }

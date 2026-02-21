@@ -2,18 +2,32 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-#define u8 uint8_t
+typedef uint8_t u8;
+
+/* Syntax:
+union {};
+
+union <name> {
+    <members>;
+};
+
+union <name> {
+    <members>;
+} <variables>;
+
+union {
+    <members>;
+} <variables>;
+*/
+
+// union {}; // Error
 
 union Empty {};
 
-union Data {
+union Alpha {
     int i;
     float f;
     char c;
-};
-
-union Data2 {
-    int i, i2, c2;
 };
 
 typedef union {
@@ -24,6 +38,10 @@ typedef union {
     u8 byte;
 } Bits;
 
+union Beta {
+    int i, i2, c2;
+};
+
 typedef union Date {
     int id;
     struct {
@@ -33,43 +51,58 @@ typedef union Date {
     };
 } Date;
 
-union Data get_data(void) {
-    union Data d;
+union Beta get_beta(void) {
+    union Beta d;
     d.i = 42;
     return d;
 }
 
-union Foo { int x; float y; } func(void) {
-    union Foo foo;
+union Gamma { int x; float y; } func(void) {
+    union Gamma foo;
     foo.x = 'a';
     return foo;
 }
 
-union FirstLevel {
-    union SecondLevel {
+union Delta {
+    union Lambda {
         int a;
         float b;
     } second;
 };
 
-// union {}; // Error
+union Kilo {
+    int i;
+    double d;
+}; union Romeo {
+    union Kilo k;
+};
 
-union foo { int i; double d; };
+union xray {
+    int a;
+    double b;
+};
 
 int main(void) {
     // union {}; // Error
 
     // A union is a special user-defined type in C where all members share the same memory location.
-    union Data data;
-    data.i = 10;    // sets integer
-    data.f = 3.14;  // now float overwrites the memory
-    union Data data_copy = data;
+    union Alpha data;
+    data.i = 10;   // sets integer
+    data.f = 3.14; // now float overwrites the memory
+    union Alpha data_copy = data;
 
+    // Memory allocation for union.
+    union Alpha* pData = malloc(sizeof(union Alpha));
+    pData->c = 'A';
+    free(pData);
+
+    // Bits
     Bits x;
     x.byte = 0xAB;
     printf("%u %u\n", x.a, x.b);
 
-    union Date records[] = {
+    // Beta
+    union Beta records[] = {
         0, 2023, 1, 1,
         1, 2024, 2, 2, // trailing comma
     };
@@ -78,7 +111,7 @@ int main(void) {
     union {
         int x;
         float y;
-    } anon_union = { .x = 100 };
+    } anon_union = { .x = 100, .y = 5 }; // `y` overwrites `x`
 
     union {
         int x;
@@ -86,25 +119,26 @@ int main(void) {
     } another_union;
     another_union.y = 5.5f;
 
-    // Memory allocation for union:
-    union Data* pData = malloc(sizeof(union Data));
-    pData->c = 'A';
-    free(pData);
+    // Lambda
+    union Lambda l;
 
-    // Error:
-    // union SecondLevel sl;
-    // sl.a = 20;
-    // union FirstLevel fl;
-    // fl.second = sl;
+    /* Error:
+     * union Lambda sl;
+     * sl.a = 20;
+     * union Delta fl;
+     * fl.second = sl;
+    */
 
-    //
-    int x = 42;
-    double y = 3.14;
+    // But
+    union Kilo k;
+    k.i = 42;
+    union Romeo r;
+    r.k = k;
 
-    union foo u;
+    // Other
+    int X = 42;
+    double Y = 3.14;
 
-    u = (union foo)x;
-    u = (union foo)y;
-
-    return 0;
+    union xray u = (union xray){ .a = X };
+    u = (union xray){ .b = Y }; 
 }

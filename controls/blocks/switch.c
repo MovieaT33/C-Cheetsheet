@@ -92,9 +92,7 @@ int main(void) {
 
     switch (x) {
         default:
-            break;
         case 15:
-            break;
     }
 
     // Special:

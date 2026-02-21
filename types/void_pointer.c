@@ -1,12 +1,11 @@
 int main() {
-    // Valid usage of void pointer.
-    void *ptr;
-    int a = 10;
-    ptr = &a;
-    // *ptr = 20;       // Error: cannot dereference void pointer.
+    int alpha = 10;
+    void *ptr = &alpha;
+    // *ptr = 20; // Error: cannot dereference void pointer
 
-    *(int*)ptr = 20;   // Valid: cast to appropriate type before dereferencing.
+    *(int*)ptr = 20;
 
-    ptr += 1;       // GCC extension
-    (int*)ptr *= 2; // Valid
+    // GCC extensions:
+    ptr += 1;
+    ptr -= 2;
 }

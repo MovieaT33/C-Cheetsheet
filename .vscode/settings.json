@@ -4,6 +4,8 @@
         "ebss",
         "ldata",
         "longjump",
-        "rodata"
+        "rodata",
+        "storeu",
+        "unqual"
     ]
 }

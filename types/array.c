@@ -23,7 +23,8 @@ int main(void) {
 
     // 1. One-dimensional array:
     char empty[] = {};
-    // char error_arr[] = empty;
+    // char error_arr[] = empty; // Error
+    char empty2[0] = {};
 
     int var = 5;
     int numbers[5] = {1, 2, 3, 4, var,};
@@ -152,6 +153,8 @@ int main(void) {
     // 16. GCC extension: range initialization (not standard C):
     int gcc[] = {[0 ... 10] = 70, 3, [11 ... 12] = 4};
     int gcc2[20] = {[9] = 2};
+
+    // foo({1, 2, 3}); // Error
 
     return 0;
 }

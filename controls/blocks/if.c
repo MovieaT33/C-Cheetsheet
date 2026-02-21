@@ -20,14 +20,16 @@ int main(void) {
         return 8 + y;
     }
 
-    if (x == 5) { } else { return 7; }
+    if (x += 5) { } else { return 7; }
     if (x == 100) { }
     if (x - 50 == 95 && 1) { if (1) { return -10; } else { return 10; } } else if (x == 10) { }
     else if (x == 15) { } else { return 1'000; }
 
     if (50 + 100) {}
 
-    if (1);
+    if (1)
+
+    if (y = 5, y < 10)
 
     return x;
 }

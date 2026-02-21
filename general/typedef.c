@@ -50,15 +50,23 @@ int x = 5;
 typedef typeof(x) MyType;
 MyType y = 10;
 
+typedef int Int;
+
 int main(void) {
+    char fs = 0;
+
     FooUnion foo_union_2;
     foo_union_2.b = 10;
+
+    float FooUnion = 0;
 
     // 9. Usage of typedef with function:
     typedef double fun_t(double);
     fun_t sin, cos, sqrt;
 
     int z = sin(0.5); // UB
+
+    int Int = 10; // valid, but not recommended
 
     return 0;
 }

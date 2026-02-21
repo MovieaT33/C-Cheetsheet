@@ -18,5 +18,13 @@ int main() {
     printf("H" "e" "l" "l" "o");
     printf("%d\n", ({int a = 5; a;})); // 5
 
+    char without_null[5] = "Hello";
+    printf("%s\n", without_null); // "Hello" + garbage
+
+    // `.rodata` (read-only) section
+    char *a = "hi";
+    char *b = "hi";
+    // `a == b` is true
+
     return 0;
 }

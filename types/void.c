@@ -1,11 +1,9 @@
-void greet(void) {
-    return;                         // Returns void.
-    return void;                    // Error
+void foo(void) {
+    // return;      // Returns `void`
+    // return void; // Error
 }
 
 int main(void) {
-    greet();
-    void x;                         // Error
-
-    return 0;
+    foo();
+    // void x; // Error
 }

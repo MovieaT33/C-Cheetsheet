@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <limits.h>
 
 int main(void) {
     // Note: if operands are of different types, C applies "usual arithmetic conversions".
@@ -25,7 +26,9 @@ int main(void) {
     - -b;
     -- b;
 
-    // Pointers (`&`, `*`) and their arithmetic
+    // Pointers (`&`, `*`) and their arithmetic.
+    int b, a = &b;
+    // int c = *b; // Error
 
     // (...):
     c = (a + b) * 8;
@@ -37,6 +40,9 @@ int main(void) {
 
     i = 0;
     c = ++i; // c = 1, i = 1
+
+    c /= 0; // UB
+    c %= 0; // UB
 
     // Logical operators:
     int x = 1, y = 0;
@@ -65,6 +71,12 @@ int main(void) {
     val ^= 3;
     val <<= 1;
     val >>= 1;
+
+    // a >> -1; // UB
+    // b << -1; // UB
+
+    int a = -1;
+    int b = a >> 1; // Arithmetical or logical shift?
 
     // Comparison operators:
     a = 5; b = 2;
@@ -115,6 +127,16 @@ int main(void) {
     a ^= b; // a = 111 ^ 101 = 010
 
     a ^= b ^= a;
+
+    x = (5 && 2); // x = 1 int not bool
+
+    // `a[b]` -> `*(a + b)`
+
+    // Buffer overflow and underflow:
+    int i = INT_MAX;
+    i += 1; // Overflow, UB
+    unsigned j = 0;
+    j -= 1;
 
     return 0;
 }

@@ -15,3 +15,7 @@ _Noreturn void panic(void) { // C standard
 void __attribute__((noreturn)) my_abort(void) { // GCC extension
     printf("Aborting...\n");
 }
+
+noreturn void fail() {
+    my_abort();
+}

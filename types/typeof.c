@@ -33,5 +33,10 @@ int main(void) {
     __typeof__(foo) *fp = foo;  // `fp` is pointer to function.
     __typeof__(foo) *bp = &foo;
 
+    int E;
+    const volatile int b;
+    typeof(E) E2;
+    typeof_unqual(E) E3;
+
     return 0;
 }

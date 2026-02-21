@@ -40,7 +40,11 @@ int main(void)
     int a = 1.6; // a = 1, truncation
 
     // Guaranteed sizes:
-    _Decimal32 a;
+    _Decimal32 a = 0.1df;
     _Decimal64 b;
     _Decimal128 c;
+
+    a += 0.2df; // a = 0.3, exact
+
+    _BitInt(4) d;
 }

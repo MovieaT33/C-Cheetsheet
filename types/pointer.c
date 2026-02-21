@@ -149,6 +149,10 @@ main(void) {
 
     sizeof(void); // 1
     sizeof(f);    // 1
+
+    int variable = 10, *pointer = &variable;
+    *pointer++; // increments pointer
+    (*pointer)++; // increments value
 }
 
 // Second main example: function pointer with typedef.
@@ -178,6 +182,27 @@ int main_second() {
       */
 
     int zoo = 5, *ptr = &zoo;
+
+    int *array_from_10_pointers_to_int[10];
+    int (*pointer_to_array_from_10_pointers)[10];
+
+    int E;
+    int *P = (int*)((char*)&E + 1);
+
+    float F = 1;
+    int *P2 = (int*)&F;
+    printf("%d\n", *P2); // UB
+
+    int *P3 = &(int){42};
+
+    int B[3];
+    int *P4 = B + 3; // ОК (one past the end rule)
+    *P4 = 5;         // UB
+
+    int X = 0x12345678;
+    unsigned char *P5 = (unsigned char*)&X; // `u8` is magic type
+
+    int *P6; { P6 = &(int){5}; }
 
     return 0;
 }
