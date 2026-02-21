@@ -5,7 +5,7 @@ int main(void) {
 
     int x = 15;
 
-    if (x < 10) { // When `x < 10` != 0 (true)
+    if (x += 0, x < 10) { // When `x < 10` != 0 (true)
         // `x` is less than 10
     } else if (++x, x < 20) {
         // `x` is between 10 and 19

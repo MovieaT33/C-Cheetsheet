@@ -38,4 +38,9 @@ int main(void)
     __int128_t a128_2 = 170141183460469231731687303715884105727;
 
     int a = 1.6; // a = 1, truncation
+
+    // Guaranteed sizes:
+    _Decimal32 a;
+    _Decimal64 b;
+    _Decimal128 c;
 }

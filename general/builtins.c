@@ -66,6 +66,14 @@ int demo(int *ptr, uint32_t x, uint32_t y) {
     return a[0];
 }
 
+void apply_demo(int (*func)(int, int), int x, int y) {
+    void *args = __builtin_apply_args();
+
+    void *res = __builtin_apply((void(*)())func, args, sizeof(int) * 2);
+
+    __builtin_return(res);
+}
+
 void smc_demo(void *code, size_t size) {
     /* __builtin___clear_cache */
     __builtin___clear_cache((char*)code, (char*)code + size);
@@ -77,6 +85,8 @@ void smc_demo(void *code, size_t size) {
 int main(void) {
     int x = 0x00F0F000;
     demo(&x, x, 1);
-    __extension__ __int128 huge_num;
+
+    __extension__ __int128 huge_num; // without warning
+
     return 0;
 }

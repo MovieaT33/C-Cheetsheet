@@ -33,6 +33,11 @@ inline int multiply(int a, int b) {
    - e.g., `static inline`, `inline __attribute__((noreturn))`.
 */
 
+__attribute__((noinline))
+void myfunc() {
+   printf("This function will not be inlined.\n");
+}
+
 int main(void) {
     int sum = add(3, 4); // compiler may inline this call
     printf("sum = %d\n", sum);

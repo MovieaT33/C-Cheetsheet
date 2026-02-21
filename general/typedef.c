@@ -3,6 +3,8 @@ typedef existing_type new_type_names;
 existing_type typedef new_type_names;
 
 Typedef can be used with any data type.
+See GCC typedef attributes here:
+https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gcc/Type-Attributes.html#Type-Attributes
 */
 
 // 1. Usage of typedef with basic types:
@@ -38,6 +40,15 @@ typedef int* IntPtr, int_ptr;
 // 7. Usage of typedef with function pointer:
 typedef void (*FuncPtr)(int, float),
              (*func_ptr)(int, float);
+
+
+// 8. Old GCC 2 extension:
+// typedef MyType = 42; // MyType is `int` type 
+
+// 9. New GCC extension (with typeof):
+int x = 5;
+typedef typeof(x) MyType;
+MyType y = 10;
 
 int main(void) {
     FooUnion foo_union_2;

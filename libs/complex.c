@@ -33,5 +33,16 @@ int main(void) {
     printf("conj(y) = %.2fi\n", cimag(conj(y)));
     printf("sqrt(y) = %.2f + %.2fi\n", creal(csqrt(y)), cimag(csqrt(y)));
 
+    // 4. GNU C extension
+    __complex__ double z = 3.0 + 4.0i;
+
+    double real_part = __real__ z; // 3.0
+    double imag_part = __imag__ z; // 4.0
+
+    __real__ z = 5.0;
+    __imag__ z = 6.0;
+
+    printf("z = %f + %fi\n", __real__ z, __imag__ z);
+
     return 0;
 }

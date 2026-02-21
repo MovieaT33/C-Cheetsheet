@@ -30,6 +30,8 @@ int main(void) {
     int b = sizeof a == a;
     int c = sizeof(b) == 4;
 
+    size_t c = sizeof('d'); // 'd' -> (int)100 -> 4 bytes
+
     // Using sizeof with variables:
     int x;
     double y;

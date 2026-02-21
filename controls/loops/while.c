@@ -35,7 +35,7 @@ int main(void) {
         break;
     }
 
-    while (1)
+    while (a++)
 
     return a;
 }

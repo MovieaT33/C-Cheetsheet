@@ -16,6 +16,8 @@ int multiply(int a, b) { // Error
 }
 */
 
+int zero() {} // Returns `0` by default.
+
 /* `void` (as function argument) indicates that the function cannot take any arguments.
    An empty argument list means that the function can take any number of arguments. */
 
@@ -24,21 +26,21 @@ int inner(void) {
     return 42;
 }
 
-inner(); // Error
+// inner(); // Error
 
-int inner(void) {}  // Error
+// int inner(void) {}  // Error
 
 static int another_func() {return 8;}
 
 int* foo(void) {
-    int k = 800'900;    // Stack
+    int k = 800'900; // Stack
     return &k;
 }
 
 int *bar() {static float g = 1.5; return &g;}
 
 void stack(int n) {
-    int arr[n]; // GCC extension
+    int arr[n]; // GCC extension: VLA (Variable Length Array)
 }
 
 const int *some_func(void)
@@ -70,5 +72,17 @@ int main(void) {
 
     *foo_bar() = true;  // Error. Const
 
+    do_not_work();
+
     return result;
 }
+
+void do_not_work() {
+    local_inner();
+}
+
+/* Error code:
+int main(void) { func(); }
+
+void func() { }
+*/

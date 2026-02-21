@@ -40,5 +40,10 @@ exit_loops:
     return 1;
     l2:
 
+    goto what;
+    int x = 5;
+    what:
+    printf("%d", x); // garbage
+
     return 0;
 }

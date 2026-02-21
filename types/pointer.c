@@ -11,6 +11,12 @@ inline int add(int x, int y) {
 
 void foo(void);
 
+int bar(void) {
+    static int global = 42;
+    int *addr = &global;
+    return *addr = 10;
+}
+
 // Struct example:
 struct Point {
     int x;
@@ -34,6 +40,8 @@ int proceed(int (*func)(int, int), int x, int y)
 {
     return func(x, y);
 }
+
+void f() {}
 
 int
 main(void) {
@@ -135,6 +143,12 @@ main(void) {
     (&**fp)();
     (**&**fp)();
     (*&*&*&*fp)();
+
+    void (*fp)() = f;
+    void (*fp2)() = fp + 1;
+
+    sizeof(void); // 1
+    sizeof(f);    // 1
 }
 
 // Second main example: function pointer with typedef.
@@ -148,6 +162,22 @@ int main_second() {
     f func = square;
     int result = func(5);
     printf("%d\n", result);
+
+    int variable = 10;
+    int *a = &variable;
+    int *sum = a + 10;
+    int *sub = a - 10;
+
+    int *a_2 = &variable;
+    int ptrs_sum = a - a_2;
+
+    /* Errors:
+      * int *mul = a * 2;
+      * int *div = a / 2;
+      * int ptrs_sub = a + a_2;
+      */
+
+    int zoo = 5, *ptr = &zoo;
 
     return 0;
 }

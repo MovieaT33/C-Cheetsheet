@@ -4,6 +4,9 @@ asm ( assembler_template
     : input_operands      // optional
     : clobbered_registers // optional
 );
+
+See here more:
+https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gcc/Constraints.html#Constraints
 */
 
 int main(void) {

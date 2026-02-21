@@ -52,10 +52,12 @@ union FirstLevel {
     } second;
 };
 
-union {}; // Error
+// union {}; // Error
+
+union foo { int i; double d; };
 
 int main(void) {
-    union {}; // Error
+    // union {}; // Error
 
     // A union is a special user-defined type in C where all members share the same memory location.
     union Data data;
@@ -94,6 +96,15 @@ int main(void) {
     // sl.a = 20;
     // union FirstLevel fl;
     // fl.second = sl;
+
+    //
+    int x = 42;
+    double y = 3.14;
+
+    union foo u;
+
+    u = (union foo)x;
+    u = (union foo)y;
 
     return 0;
 }

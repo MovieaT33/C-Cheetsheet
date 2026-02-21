@@ -29,5 +29,11 @@ int main(void) {
     double new_feature_double = 0x1.921fb54442d18p+1;
     long double new_feature_long_double = 0x1.921fb54442d18p+1L;
 
+    // Guaranteed sizes:
+    _Float16 x;
+    _Float32 y;
+    _Float64 z;
+    _Float128 w;
+
     return 0;
 }

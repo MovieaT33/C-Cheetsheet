@@ -23,6 +23,7 @@ int main(void) {
 
     // 1. One-dimensional array:
     char empty[] = {};
+    // char error_arr[] = empty;
 
     int var = 5;
     int numbers[5] = {1, 2, 3, 4, var,};

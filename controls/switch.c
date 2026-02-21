@@ -107,6 +107,18 @@ int main(void) {
     switch (x) {
         case 0 ... 10: // GCC extension
             break;
+        case 'A' ... 'Z':
+            break;
+    }
+
+    switch (x)
+    {
+        printf("Hello, World!\n"); // never executed
+        while (1) {
+            case 0:
+                case 1:
+                    break;
+        }
     }
 
     // switch (x) { case x: } // Error

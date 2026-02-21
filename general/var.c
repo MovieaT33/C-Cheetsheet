@@ -19,6 +19,16 @@ int global_5 = constexpr_var;
 int main(void) {
     // Statements:
 
+    /* 0. Type declaration (warning):
+    <type>;
+    */
+
+    char;
+    short;
+    int;
+    long;
+    long long;
+
     /* 1. Variable declaration:
     <type> <name>;
     */
@@ -35,6 +45,7 @@ int main(void) {
 
     int B$dollar;
     (B$dollar = 10);
+    int (café) = 20, αβγ = café;
 
     /* 3. Variable declaration:
     <type> <name> = <value>;
@@ -164,6 +175,11 @@ int main(void) {
     // 16. Initialization with itself (UB):
     int a = a;
     int b = b + 1;
+
+    /* See all GCC variable attributes:
+     * https://gcc.gnu.org/onlinedocs/gcc-13.1/gcc/Variable-Attributes.html
+     * https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gcc/Variable-Attributes.html#Variable-Attributes
+     */
 
     return 1;
 }

@@ -16,6 +16,7 @@ int main() {
 
     printf("%s\n", string);
     printf("H" "e" "l" "l" "o");
+    printf("%d\n", ({int a = 5; a;})); // 5
 
     return 0;
 }

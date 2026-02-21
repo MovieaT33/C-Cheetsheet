@@ -12,12 +12,18 @@ int main(void) {
     c = a * b;
     c = a / b;
     c = a % b;
-    a ++;
+    a++, a ++;
     // a + +; // Error
     ++a;
     + + a;
+    ++ a;
+
     b--;
-    ++b;
+    b --;
+    // b - -; // Error
+    --b;
+    - -b;
+    -- b;
 
     // Pointers (`&`, `*`) and their arithmetic
 

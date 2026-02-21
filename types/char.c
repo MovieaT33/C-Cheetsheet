@@ -2,12 +2,15 @@
 #include <uchar.h>
 
 int main(void) {
+    // Character type can be signed or unsigned, depending on the implementation.
     // Character literal transforms to integer by ASCII table.
     char character = 'A';
     char character = "A";   // Error, double quotes for strings.
 
-    // Special characters: \n, \t, \r, \0, \', \", \\, \a, \b, \f, \v
-    // POSIX: \033[0m, \033[H\033[J, \033[r;g;b;m etc.
+    /* Special characters: \n, \t, \r, \0, \', \", \\, \a, \b, \f, \v
+     * POSIX: \033[0m, \033[H\033[J, \033[r;g;b;m etc.
+     * \e
+     */
 
     char char_ = "Hi"[0];
 

@@ -2,6 +2,8 @@
 #define MAX(a,b) ((a) > (b) ? (a) : (b))
 #define SQUARE(x) ((x) * (x))
 
+#define __user   __attribute__((noderef, address_space(1)))
+
 #define likely(x)   __builtin_expect(!!(x), 1)
 #define unlikely(x) __builtin_expect(!!(x), 0)
 
@@ -16,6 +18,12 @@
 
 #define BEGIN {
 #define END }
+
+#define STR_2 "This is a very long \
+string"
+
+#define LIB <stdio.h>
+#include LIB
 
 _Static_assert(SQUARE(5) == 25, "error");
 

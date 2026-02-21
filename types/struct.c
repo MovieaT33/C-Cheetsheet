@@ -114,6 +114,10 @@ struct OldGCCStandard{
     int arr[0];
 };
 
+struct feature { int a[4]; };
+
+struct point { int x, y, z; };
+
 int main(void) {
     struct {};
 
@@ -177,6 +181,20 @@ int main(void) {
     zero->arr[0] = 1;
     zero->arr[1] = 2;
     zero->arr[2] = 3;
+
+    //
+    struct feature f(); // Must be realized.
+
+    int bar(int index) {
+        return f().a[index];
+    }
+
+    //
+    struct point pt_array[10] = {
+        [2].y = yv2,
+        [2].x = xv2,
+        [0].x = xv0
+    };
 
     return 0;
 }

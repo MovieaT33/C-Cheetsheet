@@ -15,4 +15,11 @@ int main(void) {
     int y = d[2]; // y = 21
 
     return x + y; // returns 27
+
+    // Other:
+    v4si e = a & b;
+    v4si f = a | b;
+    v4si g = a ^ b;
+    v4si mask = a > b;
+    v4si r = __builtin_shuffle(a, (v4si){3, 2, 1, 0});
 }
