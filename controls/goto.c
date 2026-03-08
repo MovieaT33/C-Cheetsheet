@@ -1,4 +1,8 @@
-// goto main; // Error
+// goto <label>; // Error
+
+int goto_is_frequently_used_in_linux = 1;
+
+#include <stdio.h>
 
 // main:
 int main(void) {
@@ -44,6 +48,13 @@ exit_loops:
     int x = 5;
     what:
     printf("%d", x); // garbage
+
+    // Infinity loop
+    for (int i = 0; i < 3; i++) {
+label:
+        printf("%d\n", i);
+    }
+    goto label;
 
     return 0;
 }

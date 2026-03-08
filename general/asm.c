@@ -9,6 +9,8 @@ See here more:
 https://gcc.gnu.org/onlinedocs/gcc-3.4.6/gcc/Constraints.html#Constraints
 */
 
+asm("nop");
+
 int main(void) {
     // No operation:
     asm volatile ("nop"); // `volatile` to prevent optimization.

@@ -18,7 +18,7 @@ int main(void) {
     // Pointer to constant
     int value = 5;
     int *const constPtr = &value;
-    *constPtr = 10;                 // Allowed
+    *constPtr = 10;                 // Allowed: value = 10;
     constPtr = NULL;                // Error
 
     // Constant pointer to constant
@@ -31,6 +31,10 @@ int main(void) {
     const int *const ptrToConst = &z;
     *ptrToConst = 10;               // Error
     ptrToConst = NULL;              // Error
+
+    //
+    int *ptrToY = (int*)&y;
+    *ptrToY = 10; // UB. My host: y = 10
 
     exit(0);
 }

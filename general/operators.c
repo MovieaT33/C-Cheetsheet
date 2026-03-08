@@ -7,7 +7,7 @@ int main(void) {
     int a = +5, b = -2, c;
 
     // Arithmetic operators:
-    c = a + b;
+    c = a + b /* -> (int)a + (int)b; */;
     c = a -
         b;
     c = a * b;
@@ -137,6 +137,9 @@ int main(void) {
     i += 1; // Overflow, UB
     unsigned j = 0;
     j -= 1;
+
+    //
+    printf("%zu\n", _Alignof(double));
 
     return 0;
 }

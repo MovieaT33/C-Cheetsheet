@@ -1,3 +1,5 @@
+// __builtin_stdc_*
+
 #include <stdio.h>
 #include <stdint.h>
 #include <string.h>

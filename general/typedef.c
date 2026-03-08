@@ -52,6 +52,10 @@ MyType y = 10;
 
 typedef int Int;
 
+// 10
+typedef int i32;
+typedef i32 int32_t;
+
 int main(void) {
     char fs = 0;
 

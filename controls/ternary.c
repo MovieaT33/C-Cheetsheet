@@ -22,5 +22,5 @@ int main(void) {
 
     int or_like_this = a ?: b; // GCC extension
 
-    return res;
+    return res; // 20
 }

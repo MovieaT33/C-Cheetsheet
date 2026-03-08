@@ -4,6 +4,7 @@
         "ebss",
         "ldata",
         "longjump",
+        "nixos",
         "rodata",
         "storeu",
         "unqual"

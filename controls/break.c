@@ -1,6 +1,8 @@
 // break; // Error
 
 int main(void) {
+    // break; // Error
+
     // `while` loop
     int count = 0;
     while (count < 10) {

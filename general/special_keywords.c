@@ -1,3 +1,5 @@
+// __STDC_*
+
 #include <stdio.h>
 
 int main() {

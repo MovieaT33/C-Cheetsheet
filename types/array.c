@@ -156,5 +156,14 @@ int main(void) {
 
     // foo({1, 2, 3}); // Error
 
+    //
+    int n = 3 + 2;
+    int (*p)[n];
+
+    //
+    int A[3];
+    printf("%p\n", (void*)(A + 1));  // + sizeof(int)
+    printf("%p\n", (void*)(&A + 1)); // + sizeof(A)
+
     return 0;
 }

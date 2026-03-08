@@ -80,6 +80,7 @@ union Kilo {
 union xray {
     int a;
     double b;
+    // int flex[]; // Error: unsupported
 };
 
 int main(void) {

@@ -7,7 +7,7 @@ for(;;) {
     // code executes forever
 }
 
-for (;;;;;); // Error
+for (;;...); // Error
 */
 
 // for (; 1; ) { } // Error

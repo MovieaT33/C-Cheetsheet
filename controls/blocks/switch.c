@@ -98,7 +98,7 @@ int main(void) {
     // Special:
     switch (1);
 
-    switch (1) case 10 + 5:
+    switch (1) case 10 + 5: case 15:
 
     // switch () {} // Error
 

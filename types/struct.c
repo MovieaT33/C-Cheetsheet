@@ -6,6 +6,7 @@ struct Empty {};
 struct Point {
     int x;
     _Alignas(16) int y;
+    // void a(); // Error: unsupported
 };
 
 typedef struct SomePoint {
@@ -80,6 +81,12 @@ struct foo {
 struct bar {
     short len;
     char data[];            // Flexible array member. Must be last member.
+    /* Or:
+    char data[0];
+    char data[1];
+    char data[2];
+    ...
+    */
 };
 
 // 2 flexible arrays are not allowed.
@@ -211,5 +218,12 @@ int main(void) {
         [0].x = xv0
     };
 
+    // Struct in function
+    struct InFunc { int a; };
+
     return 0;
+}
+
+void in_func(void) {
+    struct InFunc f;
 }

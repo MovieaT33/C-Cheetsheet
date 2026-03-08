@@ -185,5 +185,7 @@ int main(void) {
 
     if (-1 < 1U) // false
 
+    int __attribute__((address_space(1)) var;
+
     return 1;
 }

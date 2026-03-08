@@ -54,6 +54,22 @@ bool *foo_bar(void) {
     return &h;
 }
 
+void module__Foo(int a[10]) {
+    sizeof(a); // sizeof(int*) -> sizeof(pointer) -> 4 bytes (64-bit)
+}
+
+void module__Bar(int g(double)); // -> void f(int (*g)(double));
+
+void my_log(const char *fmt, ...)
+    __attribute__((format(printf, 1, 2)));
+
+#include <stdio.h>
+
+void module__VAL(int n, int (*a)[n]) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", (*a)[i]);
+}
+
 int main(void) {
     // Local-level function definitions
     int local_inner() {   // Compilation error, but in GCC is OK
@@ -76,6 +92,8 @@ int main(void) {
 
     int i = 1, j = 2;
     sum(i++, j++); // UB
+
+    my_log("Value: %d\n", 42);
 
     return result;
 }
