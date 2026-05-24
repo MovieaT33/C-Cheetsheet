@@ -70,7 +70,7 @@ int main(void) {
     <type> <name1>, <name2> = <value2>, <name3>;
     */
 
-    int l, m = 20, n;
+    int l, m = 20, n = main();
 
     /* 7. Reassignment of variable:
     <name> = <new_value>;
