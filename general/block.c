@@ -7,9 +7,10 @@ void function_scope_example() {
 int main(void) {
     // Block scope:
     { }
+
     int a = 5;
     {
-        int a = 10;
+        int a = 10; // shadowing
         a; // 10
     }
     a; // 5
