@@ -42,6 +42,12 @@ int main(void) {
         y = 4;
     });
 
+    // Error:
+    // if (is_ruski_pidaras() == 1) { 
+    //     int idk = 5;
+    // }
+    // printf("%d", idk);
+
     // return x * (x + y); // Error: `y` is not accessible here
     return x; // 4
 }
