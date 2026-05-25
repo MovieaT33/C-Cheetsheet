@@ -70,6 +70,10 @@ void module__VAL(int n, int (*a)[n]) {
         printf("%d ", (*a)[i]);
 }
 
+int return_num(int is_five) {
+    if (is_five) { return 5; }
+}
+
 int main(void) {
     // Local-level function definitions
     int local_inner() {   // Compilation error, but in GCC is OK
@@ -94,6 +98,8 @@ int main(void) {
     sum(i++, j++); // UB
 
     my_log("Value: %d\n", 42);
+
+    printf("%d", return_num(0)); // for ex. `4198716`
 
     return result;
 }
