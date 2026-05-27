@@ -74,6 +74,9 @@ int return_num(int is_five) {
     if (is_five) { return 5; }
 }
 
+bool sum(void);
+void sum2(void);
+
 int main(void) {
     // Local-level function definitions
     int local_inner() {   // Compilation error, but in GCC is OK
@@ -113,3 +116,11 @@ int main(void) { func(); }
 
 void func() { }
 */
+
+bool sum(void) { // or error, or random number
+    return;
+}
+
+void sum2(void) { // or error, or 5
+    return 5;
+}
