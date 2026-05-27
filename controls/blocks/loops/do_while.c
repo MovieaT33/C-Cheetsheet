@@ -4,9 +4,10 @@ do {
 } while (condition);
 */
 
-// do { } while (1); // Error
+// do { } while (1); // error
 
-int main(void) {
+int main(void)
+{
     int count = 5;
 
     do { } while (1);

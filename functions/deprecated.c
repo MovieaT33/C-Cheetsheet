@@ -2,7 +2,7 @@
 
 void __attribute__((deprecated)) func(void) { }
 
-// Or:
+// Or
 
 [[deprecated("reason")]]
 [[noreturn]] // can be combined with other attributes

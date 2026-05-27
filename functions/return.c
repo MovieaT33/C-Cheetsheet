@@ -1,12 +1,14 @@
 /* Syntax:
-return <value>;
 return;
+return <value>;
 */
 
-int sum(int a, int b) {
-    return a + b;
+int sum(int a, int b)
+{
+    return ({ a + b });
 }
 
-void void_function() {
-    return; // No value returned
+void void_function()
+{
+    return ; // no value returned
 }

@@ -10,9 +10,10 @@ while (1) {
 
 #include <stdio.h>
 
-// while (1); // Error
+// while (1); // error
 
-int main(void) {
+int main(void)
+{
     int count = 0;
 
     while (count < 5) {

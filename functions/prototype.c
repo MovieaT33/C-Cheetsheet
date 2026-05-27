@@ -1,12 +1,13 @@
-// Function protype (declaration):
+// Function protype (declaration)
 int add(int x, int y);
 
-// Or:
+// Or
 
 int add(int, int);
-// int add(float, double); // Error
+// int add(float, double); // error
 
-int main(void) {
+int main(void)
+{
     int a = 5;
     int b = 10;
 
@@ -15,7 +16,8 @@ int main(void) {
     return result; // 15
 }
 
-// Definition:
-int add(int x, int y) { // `add { return x + y; }` is invalid.
+// Definition
+int add(int x, int y) // `add { return x + y; }` is invalid
+{
     return x + y;
 }

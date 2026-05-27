@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-enum A : short {    // C23
+enum Enumerate1 : short { // C23 standard tip
     DEBUG = 100,
     INFO = 'a',
     WARNING,
@@ -8,12 +8,19 @@ enum A : short {    // C23
     CRITICAL, // trailing comma
 };
 
+// enum Enumerate1 { // error: redefinition of enum
+//     DEBUG
+// };
+
+enum Enumerate2 {
+    DEBUG // error: redeclaration of enumerator
+};
+
 typedef enum permissions {
     READ    = 1 << 0,  // 1
     WRITE   = 1 << 1,  // 2
     EXECUTE = 1 << 2   // 4
 } perms, *p_perms;
-
 
 enum state {
     // Unrecommended style (multi-character literal), but valid in C.

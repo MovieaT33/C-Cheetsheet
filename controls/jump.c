@@ -3,17 +3,20 @@
 
 jmp_buf buf;
 
-void second() {
+void second()
+{
     printf("2\n");
     longjump(buf, 10);
 }
 
-void first() {
+void first()
+{
     printf("1\n");
     second();
 }
 
-int main() {
+int main()
+{
     int value = setjmp(buf);
     if (value == 0) {
         printf("Start\n"); first();

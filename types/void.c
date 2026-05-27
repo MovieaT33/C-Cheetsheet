@@ -1,9 +1,23 @@
-void foo(void) {
-    // return;      // Returns `void`
-    // return void; // Error
+struct Enumerate : void { // error: invalid 'enum' underlying type
+    field
+};
+
+struct Struct {
+    // void field; // error: field declared void
+};
+
+struct Union {
+    // void field; // error: field declared void
+};
+
+void foo(void)
+{
+    return; // returns void
+    // return void; // error: expected expression before 'void'
 }
 
-int main(void) {
+int main(void)
+{
     foo();
-    // void x; // Error
+    // void var; // error: variable declared void
 }

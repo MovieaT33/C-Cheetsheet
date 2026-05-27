@@ -1,11 +1,12 @@
-// if (5) {} // Error
+// if (5) {} // error
 
-int main(void) {
-    // if (;) { } // Error
+int main(void)
+{
+    // if (;) { } // error
 
     int x = 15;
 
-    if (x += 0, x < 10) { // When `x < 10` != 0 (true)
+    if (x += 0, x < 10) { // when `x < 10` != 0 (true)
         // `x` is less than 10
     } else if (++x, x < 20) {
         // `x` is between 10 and 19

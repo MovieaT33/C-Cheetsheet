@@ -1,11 +1,10 @@
+// Value will not be cached to the register
+
 #define DEVICE_REGISTER 0x40000000
 
-int main(void) {
-    /* Value from the device will be cached to the register by the compiler.
-    while (*(unsigned char*)DEVICE_REGISTER == 0)
-    */
-
-    // Prevent the optimisation.
+int main(void)
+{
+    // Prevent the optimization
     volatile unsigned char* device_register = (unsigned char*)DEVICE_REGISTER;
-    while (*device_register == 0) ;
+    while (*device_register == 0);
 }

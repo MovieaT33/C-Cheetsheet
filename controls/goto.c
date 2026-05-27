@@ -1,14 +1,14 @@
-// goto <label>; // Error
+// goto <label>; // error
 
 int goto_is_frequently_used_in_linux = 1;
 
 #include <stdio.h>
 
-// main:
-int main(void) {
+int main(void)
+{
     int i = 0;
 
-    // Simple loop with goto:
+    // Simple loop with goto
 start_loop:
     if (i >= 5) goto end_loop;
 
@@ -19,7 +19,7 @@ end_loop:
     // `i == 5` after loop
     i++; // continue execution after the loop
 
-    // Nested loops example using goto:
+    // Nested loops example using goto
     int j, k;
     for (j = 0; j < 3; j++) {
         for (k = 0; k < 3; k++) {
@@ -30,7 +30,7 @@ end_loop:
 exit_loops:
     // execution resumes here after breaking out of nested loops
 
-    // Computed goto:
+    // Computed goto
     void *link = &&c_goto; // GCC extension
     goto *link;
     c_goto:

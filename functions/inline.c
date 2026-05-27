@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-// Inline function:
+// Inline function
 inline int add(int a, int b) {
     return a + b;
 }
@@ -34,11 +34,13 @@ inline int multiply(int a, int b) {
 */
 
 __attribute__((noinline))
-void myfunc() {
+void myfunc()
+{
    printf("This function will not be inlined.\n");
 }
 
-int main(void) {
+int main(void)
+{
     int sum = add(3, 4); // compiler may inline this call
     printf("sum = %d\n", sum);
 

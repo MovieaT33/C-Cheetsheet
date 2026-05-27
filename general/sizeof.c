@@ -60,15 +60,15 @@ int main(void) {
 
     // Using sizeof with struct:
     struct Example ex;
-    printf("%zu, %zu\n", sizeof(ex), sizeof ex);
+    printf("%zu, %zu, %zu\n", sizeof(ex), sizeof ex, sizeof(struct Example));
 
     // Using sizeof with union:
     union ExampleUnion exu;
-    printf("%zu, %zu\n", sizeof(exu), sizeof exu);
+    printf("%zu, %zu, %zu\n", sizeof(exu), sizeof exu, sizeof(union ExampleUnion));
 
     // Using sizeof with enum:
     enum ExampleEnum ee;
-    printf("%zu, %zu\n", sizeof(ee), sizeof ee);
+    printf("%zu, %zu, %zu\n", sizeof(ee), sizeof ee, sizeof(enum ExampleEnum));
 
     // Using sizeof with pointer types:
     printf("%zu\n", sizeof(int*));

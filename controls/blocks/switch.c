@@ -1,8 +1,9 @@
 #include <stdio.h>
 
-// switch (1) {} // Error
+// switch (1) {} // error
 
-int main(void) {
+int main(void)
+{
     switch (0) { }
     switch (1) ;
 
@@ -100,7 +101,7 @@ int main(void) {
 
     switch (1) case 10 + 5: case 15:
 
-    // switch () {} // Error
+    // switch () {} // error
 
     switch (x) {
         case 0 ... 10: // GCC extension
@@ -119,5 +120,5 @@ int main(void) {
         }
     }
 
-    // switch (x) { case x: } // Error
+    // switch (x) { case x: } // error
 }

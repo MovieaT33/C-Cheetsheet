@@ -1,7 +1,8 @@
-// break; // Error
+// break; // error
 
-int main(void) {
-    // break; // Error
+int main(void)
+{
+    // break; // error
 
     // `while` loop
     int count = 0;

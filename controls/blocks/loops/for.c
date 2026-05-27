@@ -7,12 +7,13 @@ for(;;) {
     // code executes forever
 }
 
-for (;;...); // Error
+for (;;...); // error
 */
 
-// for (; 1; ) { } // Error
+// for (; 1; ) { } // error
 
-int main(void) {
+int main(void)
+{
     for (; 1; ) { }
 
     for (int i = 0; i < 5; i++) {

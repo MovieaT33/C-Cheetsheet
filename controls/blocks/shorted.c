@@ -1,14 +1,15 @@
-// Errors (not in function):
+// Errors (not in function)
 /*
  * if (1) { }
  * while (1) { }
  * for (; 1; ) { }
  */
 
-int main(void) {
+int main(void)
+{
     int x = 5;
 
-    // `if`:
+    // `if`
     if (x > 0)
         printf("x is positive\n");
     else if (x < 0)
@@ -18,7 +19,7 @@ int main(void) {
 
     printf("This always prints\n");
 
-    // `for`:
+    // `for`
     for (int i = 0; i < 10;) ++i;
     for (int j = 0; j < 10;)
         ++j;
@@ -29,8 +30,8 @@ int main(void) {
     while (k < 5)
         --k;
 
-    // `do / while`:
-    do printf("Hello\n"); while (0); // Semicolon is required here.
+    // `do / while`
+    do printf("Hello\n"); while (0); // semicolon is required here
 
     return k;
 }

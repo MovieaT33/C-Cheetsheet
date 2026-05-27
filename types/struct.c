@@ -1,69 +1,73 @@
 #include <stdlib.h>
 #include <stddef.h>
 
-struct Empty {};
+struct {}; // warning: unnamed struct that defines no instances
 
-struct Point {
+struct EmptyStruct {};
+
+// struct EmptyStruct {}; // error: redefinition of struct
+
+struct Point1 {
     int x;
     _Alignas(16) int y;
-    // void a(); // Error: unsupported
 };
 
-typedef struct SomePoint {
+typedef struct Point2 {
     int x;
     int y;
-} SomePointType, some_point_type;
+} Point2, point_2;
 
-static some_point_type* get_point(int x, int y) {
-    static some_point_type p;   // Static to avoid returning address of local variable (stack storage).
+static point_2* get_point2(int x, int y)
+{
+    static point_2 p; // static to avoid returning address of local variable (stack storage)
     p.x = x;
     p.y = y;
     return &p;
 }
 
 typedef struct {
-    int x;
-    int y;
-} AnotherPointType, another_point_type;
+    int x, y;
+} Point3, point_3;
 
 struct Rectangle {
-    struct Point top_left;
-    struct Point bottom_right;
+    struct Point1 top_left;
+    struct Point1 bottom_right;
 } __attribute__(packed);
-// sizeof(Rectangle) = sizeof(Point) * 2 = 16 bytes (no padding due to packed attribute).
+// sizeof(Rectangle) = sizeof(Point1) * 2 = 16 B (no padding due to packed attribute)
 
 struct BitField {
-    unsigned int   a : ' ';  // 4 bytes
-    unsigned short b : 16;  // 2 bytes
-    unsigned char  c : 2;   // 2 bits
+    unsigned int   a : ' '; // 4 B
+    unsigned short b : 16;  // 2 B
+    unsigned char  c : 2;   // 1 B
+    // unsigned short d : 17; // error: width exceeds its type
 };
-// sizeof(BitField) = 8 bytes (due to alignment and padding).
+// sizeof(BitField) = 8 B (due to alignment and padding)
 
-struct Example {
+struct Struct8 {
     int tag;
-    union {         // anonymous union
+    union { // anonymous union
         int i;
         float f;
         char c;
     };
 };
 
-struct A {
-    char c;     // 1 byte
-    int  i;     // 4 bytes
-    char d;     // 1 byte
+struct Struct9 {
+    char c; // 1 B
+    int  i; // 4 B
+    char d; // 1 B
 };
-// sizeof(A) != (sizeof(char) + sizeof(int) + sizeof(char)) due to padding.
-// sizeof(A) = 12
+// sizeof(Struct9) != (sizeof(char) + sizeof(int) + sizeof(char)) due to padding
+// sizeof(Struct9) = 12
 
-struct BetterThanA {
-    int  i;     // 4 bytes
-    char c;     // 1 byte
-    char d;     // 1 byte
+struct Struct10 {
+    int  i; // 4 B
+    char c; // 1 B
+    char d; // 1 B
 };
-// sizeof(BetterThanA) = 8.
+// sizeof(Struct10) = 8
 
-// See more: hot and cold fields.
+// See more: hot and cold fields
 
 struct What {
     unsigned char;
@@ -80,7 +84,7 @@ struct foo {
 
 struct bar {
     short len;
-    char data[];            // Flexible array member. Must be last member.
+    char data[];            // flexible array member. Must be last member
     /* Or:
     char data[0];
     char data[1];
@@ -89,13 +93,14 @@ struct bar {
     */
 };
 
-// 2 flexible arrays are not allowed.
+// 2 flexible arrays are not allowed
 // struct bad {
 //     char data[];
 //     char data_2[];
 // };
 
-struct Foo { int a, b, c; } make_foo(void) {
+struct Foo { int a, b, c; } make_foo(void)
+{
     struct Foo ret = { .c = 3 };
     ret.a = 11 + ret.c;
     ret.b = ret.a * 3;
@@ -115,8 +120,6 @@ struct Person {
     int age;
 };
 
-struct {}; // Error
-
 struct OldGCCStandard{
     int arr[0];
 };
@@ -127,8 +130,9 @@ struct point { int x, y, z; };
 
 typedef struct Vec3 { int value[3]; } Vec3;
 
-Vec3 zero_vec3() {
-    Vec3 v = {}; // All members initialized to 0.
+Vec3 zero_vec3()
+{
+    Vec3 v = {}; // all members initialized to 0
     return v;
 }
 
@@ -138,41 +142,49 @@ struct {
     };
 };
 
-int main(void) {
-    struct {};
+int main(void)
+{
+    struct {}; // warning: unnamed struct that defines no instances
 
-    // Declaring and initializing struct variables:
-    struct Point p1;
+    // Declaring and initializing struct variables
+    struct Point1 p1;
     p1.x = 10;
     p1.y = 20;
-    struct Point p1_copy = p1;
+    struct Point1 p1_copy = p1;
+    struct Point1 p2 = { .x = 10, 20 };
+    struct Point1 p3 = (struct Point1){ .y = 20, .x = 10 };
+    struct Point1 p4 = {10};
+    struct Point1 p4_copy = p4;
 
-    struct Point p2 = { .x = 10, 20 };
+    // Anonymous structs
+    // struct {
+    //     int is_ok;
+    //     int code;
+    // } Result = {1, 0};
+    // struct {
+    //     int is_ok;
+    //     int code;
+    // } Result_copy = Result; // error: invalid initializer
 
-    struct Point p3 = (struct Point){ .y = 20, .x = 10 };
-
-    struct Point p4 = {10};
-    // p4.y = 0;
-    struct Point p5 = {0}; // All members initialized to 0.
-    struct Point p6 = p4;
+    struct {
+        int x, y;
+    } AnonPoint2 = { .x = 5, .y = 15 };
 
     struct {
         int x;
         int y;
-    } AnonymousPoint = { .x = 5, .y = 15 };
+    } AnonPoint3;
+    AnonPoint3.x = 25;
+    AnonPoint3.y = 35;
 
-    struct {
-        int x;
-        int y;
-    } AnotherAnonymousPoint;
-    AnotherAnonymousPoint.x = 25;
-    AnotherAnonymousPoint.y = 35;
+    struct AnonPoint4 {
+        int how_to_name_this_var;
+    } AnonPoint4 = {1};
 
-    struct Example e;
-
+    struct Struct8 e;
     e.tag = 1;
     e.i = 42;
-    e.f = 3.14f;    // overwrites e.i
+    e.f = 3.14f; // overwrites e.i
 
     struct {
         int year, month, day;
@@ -197,21 +209,19 @@ int main(void) {
         "Andrew", 30, // trailing comma
     };
 
-    size_t off = offsetof(struct A, d);
+    size_t off = offsetof(struct Struct9, d);
 
     struct S *zero = malloc(sizeof(OldGCCStandard) + sizeof(int) * 3);
     zero->arr[0] = 1;
     zero->arr[1] = 2;
     zero->arr[2] = 3;
 
-    //
-    struct feature f(); // Must be realized.
+    struct feature f(); // Must be realized
 
     int bar(int index) {
         return f().a[index];
     }
 
-    //
     struct point pt_array[10] = {
         [2].y = yv2,
         [2].x = xv2,
@@ -224,6 +234,7 @@ int main(void) {
     return 0;
 }
 
-void in_func(void) {
+void in_func(void)
+{
     struct InFunc f;
 }

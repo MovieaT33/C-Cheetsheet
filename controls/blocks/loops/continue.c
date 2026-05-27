@@ -1,9 +1,10 @@
-// continue; // Error
+// continue; // error
 
-int main(void) {
-    // continue; // Error
+int main(void)
+{
+    // continue; // error
 
-    // `while` loop:
+    // `while` loop
     int count = 0;
     while (count < 10) {
         count++;
@@ -11,13 +12,13 @@ int main(void) {
         // any code here is skipped when `count == 5`
     }
 
-    // `for` loop:
+    // `for` loop
     for (int i = 0; i < 10; i++) {
         if (i == 7) continue; // skip iteration when `i == 7`
         // code here will not execute when `i == 7`
     }
 
-    // `do...while` loop:
+    // `do...while` loop
     int j = 0;
     do {
         j++;
