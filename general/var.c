@@ -47,6 +47,8 @@ int main(void) {
     (B$dollar = 10);
     int (café) = {20, 50}, αβγ = café;
 
+    // int x = 10, x = 30; // error: redefinition
+
     /* 3. Variable declaration:
     <type> <name> = <value>;
     */

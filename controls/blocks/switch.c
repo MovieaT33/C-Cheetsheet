@@ -1,15 +1,18 @@
 #include <stdio.h>
 
-// switch (1) {} // error
+// switch (1) {} // error: expected identifier or '(' before 'switch'
 
 int main(void)
 {
-    switch (0) { }
-    switch (1) ;
+    // switch () {} // error: expected expression before ')' token
+
+    switch (0);
+    switch (1) { }
+    // switch (15) { case 10 + 5: case 15: } // error: duplicate case value
+    // switch (var) { case var: }            // error: case label does not reduce to an integer constant
 
     int expression = 1;
-
-    switch(expression) {
+    switch (expression) {
         case 0:
             // Code executed if `expression == 0`
             break;
@@ -20,60 +23,16 @@ int main(void)
             // Code executed if no case matches
     }
 
-    // Fall-through
-    int x = 15;
-    switch (x) {
-        case 15:
-            puts("1");
-            __attribute__((fallthrough));
-        // case 15: // duplicate case value error
-        case 20:
-            puts("2");
-            break;
-    }
+    char x = 15;
 
-    // Output: `1\n2\n`
-
-    // See: https://en.wikipedia.org/wiki/Duff's_device
-    // Switch + do / while
-    switch (x) {
-        case 15:
-            do {
-                --x;
-        case 14:
-            x -= 13; continue;
-        case 0:
-                break;
-            } while (x != 0);
-    }
-
-    // Switch + if, goto, for and while
-    int y = 11;
-    int ten = 10;
-    switch (x) {
-        case 15:
-            if (y > 10) {
-                x -= 5;
-                goto label;
-        case_10:
-        case ten:
-            for (int i = 0; i < 5; ++i) {
-                x += i;
-            case 35:
-                goto end;
-            }
-        label:
-            while (x < 20) {
-                x++;
-            }
-            goto case_10;
-            }
-        end: while (1) {
-            goto default_case;
+    switch (x)
+    {
+        // printf("Hello, World!\n"); // warning: statement will never be executed
+        while (1) {
+            case 0:
+                case 1:
+                    break;
         }
-        default_case:
-        default:
-            break;
     }
 
     // Switch + block
@@ -96,13 +55,6 @@ int main(void)
         case 15:
     }
 
-    // Special:
-    switch (1);
-
-    switch (1) case 10 + 5: case 15:
-
-    // switch () {} // error
-
     switch (x) {
         case 0 ... 10: // GCC extension
             break;
@@ -110,15 +62,63 @@ int main(void)
             break;
     }
 
-    switch (x)
-    {
-        printf("Hello, World!\n"); // never executed
-        while (1) {
-            case 0:
-                case 1:
-                    break;
-        }
+    // Fall-through: 1 2
+    switch (x) {
+        case 15:
+            puts("1");
+            __attribute__((fallthrough)); // optional
+        // case 15: // error: duplicate case value
+        case 20:
+            puts("2");
+            break;
     }
 
-    // switch (x) { case x: } // error
+    // See: https://en.wikipedia.org/wiki/Duff's_device
+    // Switch + do / while
+    switch (x) {
+        case 15:
+            do {
+                --x;
+        case 14:
+            x -= 13; continue;
+        case 0:
+                break;
+            } while (x != 0);
+    }
+
+    int foo = 100;
+    switch (foo) {
+        int bar = 20;
+        case 100:
+            c = foo + bar;
+            printf("%d %d %d\n", foo, bar, c); // 100 0 100
+    }
+
+    // Switch + if, goto, for and while
+    short y = 11, ten = 10;
+    switch (x) {
+        case 15:
+            if (y > 10) {
+                x -= 5;
+                goto label;
+        case_10:
+        case 10:
+            for (int i = 0; i < 5; ++i) {
+                x += i;
+            case 35:
+                goto end;
+            }
+        label:
+            while (x < 20) {
+                x++;
+            }
+            goto case_10;
+            }
+        end: while (1) {
+            goto default_case;
+        }
+        default_case:
+        default:
+            break;
+    }
 }

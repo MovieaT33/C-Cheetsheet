@@ -3,24 +3,34 @@
 
 jmp_buf buf;
 
-void second()
+void second(void)
 {
-    printf("2\n");
-    longjump(buf, 10);
+    printf("Second\n");
+    longjmp(buf, 10);
 }
 
-void first()
+void first(void)
 {
-    printf("1\n");
+    printf("First\n");
     second();
 }
 
-int main()
+int main(void)
 {
-    int value = setjmp(buf);
-    if (value == 0) {
-        printf("Start\n"); first();
+    /*
+    Start
+    First
+    Second
+    End: 10
+    */
+
+    int code = setjmp(buf);
+    if (code == 0) {
+        printf("Start\n");
+        first();
+    } else if (code == 5) {
+        printf("Code: 5");
     } else {
-        printf("End: %d\n", value);
+        printf("End: %d\n", code);
     }
 }

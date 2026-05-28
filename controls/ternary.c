@@ -1,28 +1,35 @@
-/* Syntax:
-condition ? expression_if_true : expression_if_false;
-condition ?: expression_if_false; // GCC extension, not standard C
-*/
-
 #include <stdio.h>
 
 #define NUM 50
 
-int bool = NUM ? 1 : 0;             // bool = 1
-// int bool_2 = bool ? 1 : 0;       // error
-constexpr int bool_3 = NUM ? 1 : 0;
-int bool_4 = bool_3 ? 1 : 0;        // bool_4 = 1
+char bool_1 = NUM ? 1 : 0;          // bool_1 = 1
+// char bool_2 = bool_1 ? 2 : 0;    // error: initializer element is not constant
 
-int some_func(void)
+constexpr char bool_3 = NUM ? 3 : 0; // bool_3 = 3
+char bool_4 = bool_3 ? 4 : 0;        // bool_4 = 4
+
+enum {
+    BOOL_5 = (NUM ? 1 : 0)
+};
+
+short foo(void)
 {
-    return 1;
+    return 5;
 }
 
 int main(void)
 {
-    int a = 10, b = 20;
-    int res = a > b ? a, some_func() : b;
+    short a = 10, b = 20, c = a > b ? a, foo() : b; // c = 20
 
-    int or_like_this = a ?: b; // GCC extension
+    char* a_type = (a % 2 == 0) ? "even" : "odd";
 
-    return res; // 20
+    char* grade =
+        (a >= 90) ? "A" :
+        (a >= 75) ? "B" :
+        (a >= 60) ? "C" : "F";
+
+    // GCC extension
+    int d = a ?: b; // int d = a ? a : b;
+
+    long e = a ?: e; // int e = a ? a : e;
 }
