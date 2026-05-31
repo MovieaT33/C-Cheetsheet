@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <limits.h>
 
-int main(void) {
+int main(void)
+{
     // Note: if operands are of different types, C applies "usual arithmetic conversions".
 
     int a = +5, b = -2, c;
@@ -12,6 +13,7 @@ int main(void) {
         b;
     c = a * b;
     c = a / b;
+    // float d = (float)5 << 6; // error: invalid operands to binary << (have 'float' and 'int')
     c = a % b;
     a++, a ++;
     // a + +; // Error
@@ -138,8 +140,6 @@ int main(void) {
     unsigned j = 0;
     j -= 1;
 
-    //
+    // Other
     printf("%zu\n", _Alignof(double));
-
-    return 0;
 }
