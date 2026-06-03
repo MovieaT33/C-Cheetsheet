@@ -1,39 +1,43 @@
 #include <stdlib.h>
 
-void cleanup() { }
+void cleanup() {}
 
-int main(void) {
+int main(void)
+{
     atexit(cleanup);
 
     int *p = malloc(sizeof(int));
     free(p);
     *p = 5; // UB
 
-    // Realloc example:
+    // Realloc example
     int *arr = malloc(5 * sizeof(int));
     arr = realloc(arr, 10 * sizeof(int));
     free(arr);
 
-    // Calloc example:
+    // Calloc example
     int *zeroed = calloc(5, sizeof(int));
     free(zeroed);
 
-    // Aligned allocation (C11 and later):
-    void *aligned_ptr = aligned_alloc(16, 64); // 64 bytes aligned
+    // Aligned allocation (C11 and later)
+    void *aligned_ptr = aligned_alloc(16, 64); // 64 B aligned
     free(aligned_ptr);
 
-    // Cast via an intermediate variable:
+    // Cast via an intermediate variable
 
-    // Good:
+    // Good
     void *vp = malloc(sizeof *ip);
     int *ip = vp;
 
-    // Bad:
+    // Bad
     // int *ip = (int*)malloc(sizeof(int));
 
-    // Protection against double free:
+    // Protection against double free
     free(p);
     p = NULL;
 
-    return *ip;
+    int a = 10;
+    // free(&a); // Error
+
+    return 0;
 }
