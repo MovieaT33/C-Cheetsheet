@@ -33,11 +33,16 @@ int main(void) {
     <type> <name>;
     */
 
-    int a; // Stack storage
-    a;     // Statement without any effects
+    int a;           // Stack storage
+    a;               // Statement without any effects
+    int A = 10;      // Other variable
     printf("%d", a); // UB
 
     // undefined; // Error: `undefined` is not declared
+
+    // undefined_type var; // Error
+
+    // int int; // Error
 
     /* 2. Variable declaration + assignment:
     <name> = <value>;
