@@ -120,6 +120,8 @@ int main(void)
     int what(short);
     int what(short var);
 
+    // fn1(fn2, fn3); // Order is UB
+
     return result;
 }
 
@@ -129,7 +131,10 @@ void do_not_work()
 }
 
 /* Error code:
-int main(void) { func(); }
+int main(void)
+{
+    func();
+}
 
 void func() { }
 */
