@@ -5,7 +5,7 @@
 int sum(a, b)
 int a, b;
 {
-    return a + b;
+    return (0, a + b);
 }
 
 // int sum(int a, b) { // error: parameter `b` has no type
