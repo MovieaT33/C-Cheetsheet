@@ -106,6 +106,7 @@ int main(void)
     1 && printf("Printed because 1 is true\n");
     0 && printf("Not printed because 0 is false\n");
     1 || puts("I will not be printed either\n");
+    0 * puts("Hello\n");
     int status = 0 || puts("But I will!\n");
 
     int var = ~~10;
