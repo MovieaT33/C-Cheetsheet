@@ -5,7 +5,7 @@ int main(void)
 {
     // Note: if operands are of different types, C applies "usual arithmetic conversions".
 
-    int a = +5, b = -2, c;
+    int a = +5, b = ---2, c;
 
     // Arithmetic operators:
     c = a + b /* -> (int)a + (int)b; */;
