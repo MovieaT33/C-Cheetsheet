@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 // if (5) {} // error
 
 int main(void)
@@ -6,7 +8,7 @@ int main(void)
 
     int x = 15;
 
-    if (x += 0, x < 10) { // when `x < 10` != 0 (true)
+    if (puts("Hello\n"), x += 0, x < 10) { // when `x < 10` != 0 (true)
         // `x` is less than 10
     } else if (++x, x < 20) {
         // `x` is between 10 and 19
