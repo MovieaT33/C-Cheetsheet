@@ -3,6 +3,7 @@
 
 struct {}; // warning: unnamed struct that defines no instances
 
+[[reordered]]
 struct EmptyStruct {};
 
 // struct EmptyStruct {}; // error: redefinition of struct
